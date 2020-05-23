@@ -2,7 +2,7 @@
   "name": "check_circleci",
   "version": "1.0.0",
   "description": "Checks CircleCI build status",
-  "main": "src/checkCircleCi.js",
+  "main": "checkCircleCi.js",
   "dependencies": {
     "bent": "^7.3.1"
   }
