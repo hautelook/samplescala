@@ -7,4 +7,4 @@ Check CircleCI:
   script:
     - cd .gitlab-ci
     - npm install
-    - node checkCircleCI.js
+    - node checkCircleCi.js
