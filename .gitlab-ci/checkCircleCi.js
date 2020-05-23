@@ -48,7 +48,6 @@ async function checkBuildStatus(url) {
 async function checkForBuild(url, sha) {
     console.log("Checking CircleCI builds for commit " + sha);
     try {
-        console.log(url);
         let response = await getJSON(url);
         for (var i = 0; i < response.length; i++) {
             if (response[i].vcs_revision == sha) {
