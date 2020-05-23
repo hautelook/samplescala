@@ -1,0 +1,10 @@
+stages:
+  - checkCircleCI
+
+Check CircleCI:
+  stage: checkCircleCI
+  image: gitlab-registry.nordstrom.com/cicd/container-image-composer/runtime/nodejs:10.15.2
+  script:
+    - cd .gitlab-ci
+    - npm install
+    - node checkCircleCI.js
