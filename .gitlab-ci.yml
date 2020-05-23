@@ -1,13 +1,13 @@
 stages:
   - checkCircleCI
-
+  
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_ID == null
+ 
 Check CircleCI:
   stage: checkCircleCI
   image: gitlab-registry.nordstrom.com/cicd/container-image-composer/runtime/nodejs:12.16.3
-  rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
-      when: always
-    - when: on_success
   script:
     - cd .gitlab-ci
     - npm ci
