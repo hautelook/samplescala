@@ -6,5 +6,5 @@ Check CircleCI:
   image: gitlab-registry.nordstrom.com/cicd/container-image-composer/runtime/nodejs:12.16.3
   script:
     - cd .gitlab-ci
-    - npm install
+    - npm ci
     - node checkCircleCi.js
