@@ -95,6 +95,7 @@ async function start() {
             console.log("The build completed successfully");
             break;
         }
+        await sleep(sleepMs);
         count++;
     }
 }
