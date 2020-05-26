@@ -93,11 +93,11 @@ async function start() {
         let buildStatus = await checkBuildStatus(baseUrl + project + "/" + buildNum + tokenParam);
         if (failedStatuses.includes(buildStatus)) {
             console.error("The build did not complete successfully with a status of " + buildStatus);
-             console.log("Circle CI url" + baseUrl);
+             console.log("Circle CI url: " + baseUrl);
             process.exit(1);
         } else if (successStatuses.includes(buildStatus)) {
             console.log("The build completed successfully");
-             console.log("Circle CI url" + baseUrl);
+             console.log("Circle CI url: " + baseUrl);
             break;
         }
         await sleep(sleepMs);
