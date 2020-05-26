@@ -8,4 +8,4 @@ workflow:
 include:
   - project: 'CICD/pipeline-templates'
     ref: NRHL-gitlab-circleci
-    file: 'circle-ci/jobs.yml'
+    file: 'templates/circle-ci/jobs.yml'
