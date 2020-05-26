@@ -4,11 +4,8 @@ stages:
 workflow:
   rules:
     - if: $CI_MERGE_REQUEST_ID == null
- 
-Check CircleCI:
-  stage: checkCircleCI
-  image: gitlab-registry.nordstrom.com/cicd/container-image-composer/runtime/nodejs:12.16.3
-  script:
-    - cd .gitlab-ci
-    - npm ci
-    - node checkCircleCi.js
+
+include:
+  - project: 'CICD/pipeline-templates'
+    ref: NRHL-gitlab-circleci
+    file: 'circle-ci/jobs.yml'
