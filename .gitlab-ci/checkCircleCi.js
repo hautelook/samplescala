@@ -51,7 +51,6 @@ async function checkBuildStatus(url) {
 async function checkBuildUrl(url) {
     try {
         let response = await getJSON(url);
-        console.log("Build url is " + response.build_url);
         return response.build_url;
     } catch {
         console.error("There was an error checking the build url from CircleCI");
