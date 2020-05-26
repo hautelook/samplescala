@@ -29,8 +29,11 @@ const sleepMs = 10000;
 
 // CircleCI statuses that should indicate a pipeline failure
 const failedStatuses = ["canceled", "infrastructure_fail", "timedout", "failed"];
-// For reference, remaining available CircleCI status types:
-// "retried", "not_run", "running", "queued", "scheduled", "not_running", "no_tests", "fixed", "success"
+// CircleCI statuses that should indicate a pipeline success
+const successStatuses = ["fixed", "success"]
+// For reference, remaining available CircleCI status types which will result in the pipeline
+// continuing to run expecting a different status change:
+// "retried", "not_run", "running", "queued", "scheduled", "not_running", "no_tests"
 
 // Returns the build status for a single CircleCI job
 async function checkBuildStatus(url) {
@@ -91,7 +94,7 @@ async function start() {
         if (failedStatuses.includes(buildStatus)) {
             console.error("The build did not complete successfully with a status of " + buildStatus);
             process.exit(1);
-        } else if (buildStatus == "success") {
+        } else if (successStatuses.includes(buildStatus)) {
             console.log("The build completed successfully");
             break;
         }
