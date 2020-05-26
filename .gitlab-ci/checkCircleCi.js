@@ -47,6 +47,17 @@ async function checkBuildStatus(url) {
     }
 }
 
+// Returns the build url for a single CircleCI job
+async function checkBuildUrl(url) {
+    try {
+        let response = await getJSON(url);
+        return response.build_url;
+    } catch {
+        console.error("There was an error checking the build url from CircleCI");
+        process.exit(1);
+    }
+}
+
 // Returns the build number for a given commit, or 0 if not found
 async function checkForBuild(url, sha) {
     console.log("Checking CircleCI builds for commit " + sha);
@@ -91,13 +102,13 @@ async function start() {
     // Continue with remaining time
     while (count <= iterations) {
         let buildStatus = await checkBuildStatus(baseUrl + project + "/" + buildNum + tokenParam);
+        let buildUrl = await checkBuildUrl(baseUrl + project + "/" + buildNum + tokenParam);
         if (failedStatuses.includes(buildStatus)) {
-            console.error("The build did not complete successfully with a status of " + buildStatus);
-             console.log("Circle CI url: " + baseUrl);
+            console.log("Go to " + buildUrl + " to get more details on the CircleCI build failure.");
             process.exit(1);
         } else if (successStatuses.includes(buildStatus)) {
             console.log("The build completed successfully");
-             console.log("Circle CI url: " + baseUrl);
+            console.log("Go to " + buildUrl + " to check the CircleCI build details.");
             break;
         }
         await sleep(sleepMs);
