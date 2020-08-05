@@ -10,4 +10,4 @@ include:
     ref: NRHL-gitlab-circleci
     file: 'templates/circle-ci/jobs.yml'
 
-#test smart commit
+#test smart commit time 
