@@ -10,4 +10,4 @@ include:
     ref: NRHL-gitlab-circleci
     file: 'templates/circle-ci/jobs.yml'
 
-#test transition from branch
+#test branch changes for smart commit
